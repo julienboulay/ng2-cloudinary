@@ -28,28 +28,62 @@ Install through npm:
 npm install --save ng2-cloudinary
 ```
 
-Then use it in your app like so:
-
-```typescript
-import {Component} from '@angular/core';
-import {HelloWorld} from 'ng2-cloudinary';
-
-@Component({
-  selector: 'demo-app',
-  directives: [HelloWorld],
-  template: '<hello-world></hello-world>'
-})
-export class DemoApp {}
-```
+## Usage
 
 You may also find it useful to view the [demo source](https://github.com/ekito/ng2-cloudinary/blob/master/demo/demo.ts).
 
-### Usage without a module bundler
+### cl-image or CloudinaryImageComponent
+
+This directive allows displaying Cloudinary image and apply transformations 
+
+```typescript
+import {Component} from '@angular/core';
+import {CloudinaryImageComponent} from 'ng2-cloudinary';
+
+@Component({
+  selector: 'demo-app',
+  directives: [CloudinaryImageComponent],
+  template: '<cl-image public-id="public_cloudinary_id" [options]="options"></cl-image>'
+})
+export class DemoApp {
+  options: new CloudinaryOptions({ cloud_name: 'ekito'});
+}
 ```
-<script src="node_modules/ng2-cloudinary/ng2-cloudinary.js"></script>
-<script>
-    // everything is exported ng2Cloudinary namespace
-</script>
+
+### CloudinaryUploader
+
+This service allows uploading files to cloudinary using ng2-file-upload dependency.
+
+```typescript
+@Component({
+  selector: 'demo-app',
+  directives: [ FILE_UPLOAD_DIRECTIVES ]
+  template: '',
+})
+export class DemoApp {
+
+  cloudinaryImage: any;
+
+  cloudinaryOptions: CloudinaryOptions = new CloudinaryOptions({
+    cloud_name: 'ekito',
+    upload_preset: '1234abcd',
+    autoUpload: true
+  });
+
+  uploader: CloudinaryUploader = new CloudinaryUploader(this.cloudinaryOptions);
+
+  constructor(){
+    let _self = this;
+
+    //Override onSuccessItem function to record cloudinary response data
+    this.uploader.onSuccessItem = function(item: any, response: string, status: number, headers: any) {
+      //response is the cloudinary response
+      //see http://cloudinary.com/documentation/upload_images#upload_response
+      _self.cloudinaryImage = JSON.parse(response);
+      
+      return {item, response, status, headers};
+    };
+  }
 ```
 
 ## Documentation
