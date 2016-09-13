@@ -1,6 +1,6 @@
 # ng2-cloudinary
 [![Build Status](https://travis-ci.org/Ekito/ng2-cloudinary.svg?branch=master)](https://travis-ci.org/ekito/ng2-cloudinary)
-[![npm version](https://badge.fury.io/js/ng2-cloudinary.svg)](http://badge.fury.io/js/ng2-cloudinary)
+[![npm version](https://badge.fury.io/js/ng2-cloudinary.svg)](https://badge.fury.io/js/ng2-cloudinary)
 [![devDependency Status](https://david-dm.org/ekito/ng2-cloudinary/dev-status.svg)](https://david-dm.org/ekito/ng2-cloudinary#info=devDependencies)
 [![GitHub issues](https://img.shields.io/github/issues/ekito/ng2-cloudinary.svg)](https://github.com/ekito/ng2-cloudinary/issues)
 [![GitHub stars](https://img.shields.io/github/stars/ekito/ng2-cloudinary.svg)](https://github.com/ekito/ng2-cloudinary/stargazers)
@@ -13,6 +13,7 @@ https://ekito.github.io/ng2-cloudinary/demo/
 
 - [About](#about)
 - [Installation](#installation)
+- [Usage](#usage)
 - [Documentation](#documentation)
 - [Development](#development)
 - [License](#licence)
