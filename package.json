@@ -7,8 +7,9 @@
   "scripts": {
     "prestart": "typings install",
     "start": "concurrently --raw \"webpack-dev-server --open\" \"npm run test:watch\"",
+    "compile": "tsc -p .",
     "build:demo": "webpack -p",
-    "build:dist": "webpack --config webpack.config.dist.js",
+    "build:dist": "npm run compile && webpack --config webpack.config.dist.js",
     "pretest": "typings install",
     "test": "karma start",
     "test:watch": "karma start --watch",
