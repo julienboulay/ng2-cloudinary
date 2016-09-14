@@ -1,14 +1,15 @@
 {
   "name": "ng2-cloudinary",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Angular2 components for Cloudinary image back-end",
   "main": "./ng2-cloudinary.js",
   "typings": "./ng2-cloudinary.d.ts",
   "scripts": {
     "prestart": "typings install",
     "start": "concurrently --raw \"webpack-dev-server --open\" \"npm run test:watch\"",
+    "compile": "tsc -p .",
     "build:demo": "webpack -p",
-    "build:dist": "webpack --config webpack.config.dist.js",
+    "build:dist": "npm run compile && webpack --config webpack.config.dist.js",
     "pretest": "typings install",
     "test": "karma start",
     "test:watch": "karma start --watch",

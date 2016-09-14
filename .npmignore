@@ -1,0 +1,21 @@
+# typings
+typings
+
+# testing
+karma.conf.js
+coverage
+
+# demo build
+demo
+webpack.config.js
+
+# build scripts
+webpack.config.dist.js
+
+#typescript sources
+*.ts
+*.js.map
+!*.d.ts
+/src/**/*.ts
+!/src/**/*.d.ts
+
