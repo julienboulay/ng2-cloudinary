@@ -1,6 +1,6 @@
 {
   "name": "ng2-cloudinary",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Angular2 components for Cloudinary image back-end",
   "main": "./ng2-cloudinary.js",
   "typings": "./ng2-cloudinary.d.ts",
