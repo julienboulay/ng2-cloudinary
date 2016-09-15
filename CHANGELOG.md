@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/ekito/ng2-cloudinary/compare/v0.2.0...v0.3.0) (2016-09-15)
+
+
+### Bug Fixes
+
+* **bin:** change build to commonjs ([d181f03](https://github.com/ekito/ng2-cloudinary/commit/d181f03))
+
+
+### Features
+
+* **bin:** Expose ng2-file-upload directives to use it without needing ng2-file-upload module ([00d1444](https://github.com/ekito/ng2-cloudinary/commit/00d1444))
+* **dependencies:** Upgrade to angular 2.0.0 final ([f2473b4](https://github.com/ekito/ng2-cloudinary/commit/f2473b4))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/ekito/ng2-cloudinary/compare/v0.1.2...v0.2.0) (2016-09-15)
 
