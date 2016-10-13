@@ -51,6 +51,7 @@ describe('CloudinaryImage component', () => {
       cloud_name: 'ekito'
     });
     clImageComponent.publicId = 'testPublicId';
+    clImageComponent.ngOnChanges(null);
     fixture.detectChanges();
 
     let expectedImageUrl: string = 'https://res.cloudinary.com/ekito/image/upload/testPublicId.jpg';
@@ -68,11 +69,12 @@ describe('CloudinaryImage component', () => {
     clImageComponent.height = '100';
     clImageComponent.width = '150';
     clImageComponent.publicId = 'testPublicId';
+    clImageComponent.ngOnChanges(null);
     fixture.detectChanges();
 
     let expectedImageUrl: string = 'https://res.cloudinary.com/ekito/image/upload/h_100,w_150/testPublicId.jpg';
     expect(clImageComponent.imageUrl).to.equal(expectedImageUrl);
     expect(fixture.nativeElement.innerHTML.trim())
-      .to.equal('<img ng-reflect-src="' + expectedImageUrl + '" src="' + expectedImageUrl + '" style="height: 100px; width: 150px;">');
+      .to.equal('<img ng-reflect-src="' + expectedImageUrl + '" src="' + expectedImageUrl + '">');
   });
 });

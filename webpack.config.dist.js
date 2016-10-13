@@ -1,8 +1,8 @@
 module.exports = {
   entry: './ng2-cloudinary.ts',
   output: {
-    filename: './bundles/ng2-cloudinary.js',
-    libraryTarget: 'umd',
+    filename: './ng2-cloudinary.js',
+    libraryTarget: 'commonjs2',
     library: 'ng2-cloudinary'
   },
   externals: {

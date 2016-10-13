@@ -1,1 +1,1 @@
-export * from './src/ng2Cloudinary.module';
+export * from './src/cloudinary.module';

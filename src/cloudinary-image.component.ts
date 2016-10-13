@@ -1,71 +1,67 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CloudinaryOptions } from './cloudinary-options.class';
+import { CloudinaryTransforms } from './cloudinary-transforms.class';
+import { CloudinaryImageService } from './cloudinary-image.service';
 
 @Component({
   selector: 'cl-image',
   template: `
-    <img [src]="imageUrl" [style.height.px]="height" [style.width.px]="width">
+    <img [src]="imageUrl">
   `
 })
-export class CloudinaryImageComponent implements OnInit {
+export class CloudinaryImageComponent implements OnInit, OnChanges {
     imageUrl: string = '';
+    transforms: CloudinaryTransforms = new CloudinaryTransforms();
+
+    @Input('public-id') publicId: string;
     @Input() options: CloudinaryOptions;
-    @Input() height: string;
-    @Input() width: string;
-    @Input() crop: string;
-    @Input() gravity: string;
-    @Input() x: string;
-    @Input() y: string;
+
+    constructor(private _imageService: CloudinaryImageService) { }
 
     ngOnInit(): void {
       if (!this.options) throw new Error('CloudinaryOptions are required for cl-image component');
     }
 
-    @Input('public-id')
-    set publicId(value: string) {
-        this.imageUrl = this.getImageUrl(value);
+    ngOnChanges(changes: SimpleChanges): void {
+        if (this.publicId && this.options) {
+            this.imageUrl = this._imageService.getImageUrl(this.publicId, this.options, this.transforms);
+        }else {
+            this.imageUrl = '';
+        }
     }
 
-    private getImageUrl(publicId: string): string {
-        let resourceUrl: string = '';
-
-        if (publicId) {
-            resourceUrl = 'https://res.cloudinary.com/' +
-                this.options.cloud_name + '/' +
-                'image/upload/' +
-                this.getTransformationForUrlSegment() +
-                publicId + '.jpg';
-        }
-        return resourceUrl;
+    @Input()
+    set format(value: string){
+        this.transforms.format = value;
     }
 
-    private getTransformationForUrlSegment(): string {
-        let transformSegment: string = '';
-
-        transformSegment += this.toPropertySegment(transformSegment, 'height', this.height);
-        transformSegment += this.toPropertySegment(transformSegment, 'width', this.width);
-        transformSegment += this.toPropertySegment(transformSegment, 'gravity', this.gravity);
-        transformSegment += this.toPropertySegment(transformSegment, 'crop', this.crop);
-        transformSegment += this.toPropertySegment(transformSegment, 'x', this.x);
-        transformSegment += this.toPropertySegment(transformSegment, 'y', this.y);
-
-        if (transformSegment.length > 0) {
-            transformSegment += '/';
-        }
-
-        return transformSegment;
+    @Input()
+    set height(value: string) {
+        this.transforms.height = value;
     }
 
-    private toPropertySegment(segment: string, name: string, value: any): string {
-        let newSegment: string = '';
+    @Input()
+    set width(value: string) {
+        this.transforms.width = value;
+    }
 
-        if (name && value) {
-            if (segment.length > 0) {
-                newSegment += ',';
-            }
+    @Input()
+    set crop(value: string) {
+        this.transforms.crop = value;
+    }
 
-            newSegment += name.substring(0, 1).toLowerCase() + '_' + value;
-        }
-        return newSegment;
+    @Input()
+    set gravity(value: string) {
+        this.transforms.gravity = value;
+    }
+
+    @Input()
+    set x(value: string) {
+        this.transforms.x = value;
+    }
+
+    @Input()
+    set y(value: string) {
+        this.transforms.y = value;
     }
 }

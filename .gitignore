@@ -1,6 +1,6 @@
 .idea
+.vscode
 .DS_Store
 node_modules
 typings
 coverage
-bundles
