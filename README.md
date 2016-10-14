@@ -31,7 +31,7 @@ npm install --save ng2-cloudinary
 
 ## Usage
 
-You may also find it useful to view the [demo source](https://github.com/ekito/ng2-cloudinary/blob/master/demo/demo.ts).
+You may also find it useful to view the [demo source](https://github.com/ekito/ng2-cloudinary/blob/master/demo/demo.component.ts).
 
 ### cl-image or CloudinaryImageComponent
 
@@ -43,7 +43,6 @@ import {CloudinaryImageComponent} from 'ng2-cloudinary';
 
 @Component({
   selector: 'demo-app',
-  directives: [CloudinaryImageComponent],
   template: '<cl-image public-id="public_cloudinary_id" [options]="options"></cl-image>'
 })
 export class DemoApp {
@@ -58,8 +57,7 @@ This service allows uploading files to cloudinary using ng2-file-upload dependen
 ```typescript
 @Component({
   selector: 'demo-app',
-  directives: [ FILE_UPLOAD_DIRECTIVES ]
-  template: '',
+  template: '<input type="file" ng2FileSelect [uploader]="uploader"/>',
 })
 export class DemoApp {
 

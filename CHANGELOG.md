@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/ekito/ng2-cloudinary/compare/v0.4.0...v0.5.0) (2016-10-14)
+
+
+### Bug Fixes
+
+* **Ng2CloudinaryModule:** Add missing export for CloudinaryTransforms ([f6c8495](https://github.com/ekito/ng2-cloudinary/commit/f6c8495))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/ekito/ng2-cloudinary/compare/v0.3.0...v0.4.0) (2016-10-13)
 
