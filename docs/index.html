@@ -89,7 +89,7 @@
 				<p>Install through npm:</p>
 				<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save ng2-cloudinary</span>
 </code></pre><h2 id="usage">Usage</h2>
-				<p>You may also find it useful to view the <a href="https://github.com/ekito/ng2-cloudinary/blob/master/demo/demo.ts">demo source</a>.</p>
+				<p>You may also find it useful to view the <a href="https://github.com/ekito/ng2-cloudinary/blob/master/demo/demo.component.ts">demo source</a>.</p>
 				<h3 id="cl-image-or-cloudinaryimagecomponent">cl-image or CloudinaryImageComponent</h3>
 				<p>This directive allows displaying Cloudinary image and apply transformations </p>
 				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {Component} from <span class="hljs-string">'@angular/core'</span>;
@@ -97,7 +97,6 @@
 
 @Component({
   selector: <span class="hljs-string">'demo-app'</span>,
-  directives: [CloudinaryImageComponent],
   template: <span class="hljs-string">'&lt;cl-image public-id="public_cloudinary_id" [options]="options"&gt;&lt;/cl-image&gt;'</span>
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DemoApp {
@@ -108,8 +107,7 @@
 				<p>This service allows uploading files to cloudinary using ng2-file-upload dependency.</p>
 				<pre><code class="lang-typescript">@Component({
   selector: <span class="hljs-string">'demo-app'</span>,
-  directives: [ FILE_UPLOAD_DIRECTIVES ]
-  template: <span class="hljs-string">''</span>,
+  template: <span class="hljs-string">'&lt;input type="file" ng2FileSelect [uploader]="uploader"/&gt;'</span>,
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DemoApp {
 
