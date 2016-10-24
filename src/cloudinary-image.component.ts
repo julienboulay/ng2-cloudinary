@@ -38,12 +38,12 @@ export class CloudinaryImageComponent implements OnInit, OnChanges {
     }
 
     @Input()
-    set height(value: string) {
+    set height(value: number) {
         this.transforms.height = value;
     }
 
     @Input()
-    set width(value: string) {
+    set width(value: number) {
         this.transforms.width = value;
     }
 
@@ -58,12 +58,13 @@ export class CloudinaryImageComponent implements OnInit, OnChanges {
     }
 
     @Input()
-    set x(value: string) {
+    set x(value: number) {
         this.transforms.x = value;
     }
 
     @Input()
-    set y(value: string) {
+    set y(value: number) {
         this.transforms.y = value;
     }
+
 }

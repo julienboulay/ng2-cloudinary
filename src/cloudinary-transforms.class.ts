@@ -1,10 +1,10 @@
 export class CloudinaryTransforms {
     format: string;
-    height: string;
-    width: string;
+    height: number;
+    width: number;
     crop: string;
     gravity: string;
-    x: string;
-    y: string;
+    x: number;
+    y: number;
 
 }
