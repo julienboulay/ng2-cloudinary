@@ -6,7 +6,7 @@ import { CloudinaryImageService } from './cloudinary-image.service';
 @Component({
   selector: 'cl-image',
   template: `
-    <img [src]="imageUrl">
+    <img [src]="imageUrl" [title]="title || ''" [alt]="alt || ''">
   `
 })
 export class CloudinaryImageComponent implements OnInit, OnChanges {
@@ -15,6 +15,8 @@ export class CloudinaryImageComponent implements OnInit, OnChanges {
 
     @Input('public-id') publicId: string;
     @Input() options: CloudinaryOptions;
+    @Input() title: string;
+    @Input() alt: string;
 
     constructor(private _imageService: CloudinaryImageService) { }
 

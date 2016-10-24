@@ -26,7 +26,8 @@ describe('CloudinaryImage component', () => {
       cloud_name: 'ekito'
     });
     fixture.detectChanges();
-    expect(fixture.nativeElement.innerHTML.trim()).to.equal('<img ng-reflect-src="" src="">');
+    expect(fixture.nativeElement.innerHTML.trim()).to.contain('img');
+    expect(fixture.nativeElement.innerHTML.trim()).to.contain('src=""');
   });
 
   it('should create img DOM element without publicId', () => {
@@ -40,8 +41,8 @@ describe('CloudinaryImage component', () => {
 
     let expectedImageUrl: string = '';
     expect(clImageComponent.imageUrl).to.equal(expectedImageUrl);
-    expect(fixture.nativeElement.innerHTML.trim())
-      .to.equal('<img ng-reflect-src="' + expectedImageUrl + '" src="' + expectedImageUrl + '">');
+    expect(fixture.nativeElement.innerHTML.trim()).to.contain('img');
+    expect(fixture.nativeElement.innerHTML.trim()).to.contain('src="' + expectedImageUrl + '"');
   });
 
   it('should create img DOM element with publicId', () => {
@@ -56,8 +57,8 @@ describe('CloudinaryImage component', () => {
 
     let expectedImageUrl: string = 'https://res.cloudinary.com/ekito/image/upload/testPublicId.jpg';
     expect(clImageComponent.imageUrl).to.equal(expectedImageUrl);
-    expect(fixture.nativeElement.innerHTML.trim())
-      .to.equal('<img ng-reflect-src="' + expectedImageUrl + '" src="' + expectedImageUrl + '">');
+    expect(fixture.nativeElement.innerHTML.trim()).to.contain('img');
+    expect(fixture.nativeElement.innerHTML.trim()).to.contain('src="' + expectedImageUrl + '"');
   });
 
   it('should create img DOM element with transformations', () => {
@@ -74,7 +75,27 @@ describe('CloudinaryImage component', () => {
 
     let expectedImageUrl: string = 'https://res.cloudinary.com/ekito/image/upload/h_100,w_150/testPublicId.jpg';
     expect(clImageComponent.imageUrl).to.equal(expectedImageUrl);
-    expect(fixture.nativeElement.innerHTML.trim())
-      .to.equal('<img ng-reflect-src="' + expectedImageUrl + '" src="' + expectedImageUrl + '">');
+    expect(fixture.nativeElement.innerHTML.trim()).to.contain('img');
+    expect(fixture.nativeElement.innerHTML.trim()).to.contain('src="' + expectedImageUrl + '"');
+  });
+
+  it('should create img DOM element with title and alt', () => {
+    const fixture: ComponentFixture<CloudinaryImageComponent> = TestBed.createComponent(CloudinaryImageComponent);
+    const clImageComponent: CloudinaryImageComponent = fixture.componentInstance;
+    clImageComponent.options = new CloudinaryOptions({
+      cloud_name: 'ekito'
+    });
+    clImageComponent.publicId = 'testPublicId';
+    clImageComponent.title = 'testTitle';
+    clImageComponent.alt = 'testAlt';
+    clImageComponent.ngOnChanges(null);
+    fixture.detectChanges();
+
+    let expectedImageUrl: string = 'https://res.cloudinary.com/ekito/image/upload/testPublicId.jpg';
+    expect(clImageComponent.imageUrl).to.equal(expectedImageUrl);
+    expect(fixture.nativeElement.innerHTML.trim()).to.contain('img');
+    expect(fixture.nativeElement.innerHTML.trim()).to.contain('src="' + expectedImageUrl + '"');
+    expect(fixture.nativeElement.innerHTML.trim()).to.contain('title="testTitle"');
+    expect(fixture.nativeElement.innerHTML.trim()).to.contain('alt="testAlt"');
   });
 });
