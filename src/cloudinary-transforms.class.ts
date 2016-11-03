@@ -53,4 +53,34 @@ export class CloudinaryTransforms {
     density: number;
     flags: string;
     transformation: string;
+
+    public toUrlSegment(): string {
+        let transformSegment: string = '';
+
+        //Loop on all transformations
+        for (let key in this) {
+            if (this.hasOwnProperty(key) && key !== 'format') {
+                transformSegment += this.toPropertySegment(transformSegment, key, this[key]);
+            }
+        }
+
+        if (transformSegment.length > 0) {
+            transformSegment += '/';
+        }
+
+        return transformSegment;
+    }
+
+    private toPropertySegment(segment: string, transformation: string, value: any): string {
+        let newSegment: string = '';
+
+        if (transformation && value) {
+            if (segment.length > 0) {
+                newSegment += ',';
+            }
+
+            newSegment += CloudinaryTransforms.URL_PARAMS[transformation] + '_' + value;
+        }
+        return newSegment;
+    }
 }
