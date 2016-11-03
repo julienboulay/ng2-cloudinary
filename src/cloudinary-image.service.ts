@@ -21,12 +21,12 @@ export class CloudinaryImageService {
 function getTransformationForUrlSegment(transforms: CloudinaryTransforms): string {
     let transformSegment: string = '';
 
-    transformSegment += toPropertySegment(transformSegment, 'height', transforms.height);
-    transformSegment += toPropertySegment(transformSegment, 'width', transforms.width);
-    transformSegment += toPropertySegment(transformSegment, 'gravity', transforms.gravity);
-    transformSegment += toPropertySegment(transformSegment, 'crop', transforms.crop);
-    transformSegment += toPropertySegment(transformSegment, 'x', transforms.x);
-    transformSegment += toPropertySegment(transformSegment, 'y', transforms.y);
+    //Loop on all transformations
+    for (let key in transforms) {
+        if (key !== 'format') {
+            transformSegment += toPropertySegment(transformSegment, key, transforms[key]);
+        }
+    }
 
     if (transformSegment.length > 0) {
         transformSegment += '/';
@@ -35,15 +35,15 @@ function getTransformationForUrlSegment(transforms: CloudinaryTransforms): strin
     return transformSegment;
 }
 
-function toPropertySegment(segment: string, name: string, value: any): string {
+function toPropertySegment(segment: string, transformation: string, value: any): string {
     let newSegment: string = '';
 
-    if (name && value) {
+    if (transformation && value) {
         if (segment.length > 0) {
             newSegment += ',';
         }
 
-        newSegment += name.substring(0, 1).toLowerCase() + '_' + value;
+        newSegment += CloudinaryTransforms.URL_PARAMS[transformation] + '_' + value;
     }
     return newSegment;
 }
