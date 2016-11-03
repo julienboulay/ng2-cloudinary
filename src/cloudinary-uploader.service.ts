@@ -21,7 +21,7 @@ export class CloudinaryUploader extends FileUploader {
     return {fileItem, form};
   }
 
-  private getUploadUrl(opts: CloudinaryOptions): string {
+  protected getUploadUrl(opts: CloudinaryOptions): string {
     let cloud_name: string = opts.cloud_name;
     let resource_type: string = opts.resource_type;
     let type: string = opts.type;
