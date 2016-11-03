@@ -14,7 +14,10 @@
             {{ CODE_SAMPLES.components['cl-image']}}
         </code>
     </pre>
-    <p>For example, displaying the image with a public ID of <code>sample</code> uploaded to Cloudinary's <code>demo</code> account in <code>jpg</code> format:</p>
+    <p>Then use the <code>cl-image</code> tag to display your image with the corresponding transformation, as in the following examples</p>
+    
+    <!-- 1rst example -->
+    <h2 class="chapter-header">Displaying an image</h2>
     <pre>
         <code class="language-markup">
             {{ CODE_SAMPLES.templates['cl-image'].simple}}
@@ -23,7 +26,8 @@
     <p style="text-align:center;">
         <cl-image public-id="sample" [options]="options" height="334" alt="Sample image" title="Sample image title"></cl-image>
     </p>
-    <p>Displaying the same image with a limited <code>height</code> of 200 pixels</p>
+    <!-- 2nd example -->
+    <h2 class="chapter-header">With a limited height</h2>
     <pre>
         <code class="language-markup">
             {{ CODE_SAMPLES.templates['cl-image']['transform-height']}}
@@ -32,18 +36,7 @@
     <p style="text-align:center;">
         <cl-image public-id="sample" [options]="options" height="200" alt="Sample image" title="Sample image title"></cl-image>
     </p>
-    <div>Image transformations are limited to the following parameters in the current version: 
-        <ul>
-            <li>
-                <a href="http://cloudinary.com/documentation/image_transformations#resizing_and_cropping_images"><code>height</code>, <code>width</code></a>: in pixels only (aspect ratio might be supported in a futur version)
-            </li>
-            <li>
-                <a href="http://cloudinary.com/documentation/image_transformations#resizing_and_cropping_images"><code>crop</code></a>
-            </li>
-            <li><a href="http://cloudinary.com/documentation/image_transformations#control_gravity"><code>gravity</code>, <code>x</code>, <code>y</code></a></li>
-        </ul>
-    </div>
-    <p>For example, displaying the same image cropped to a width of 300 pixels and a height of 200 pixels.</p>
+    <h2 class="chapter-header">Cropped to width and height</h2>
     <pre>
         <code class="language-markup">
             {{ CODE_SAMPLES.templates['cl-image']['transform-crop']}}
@@ -52,10 +45,10 @@
     <p style="text-align:center;">
         <cl-image public-id="sample" [options]="options" width="300" height="200" crop="crop"></cl-image>
     </p>
-    <p>Another example, displaying an image with automatic cropping and fill mode.</p>
+    <h2 class="chapter-header">With automatic cropping</h2>
     <pre>
         <code class="language-markup">
-            {{ CODE_SAMPLES.templates['cl-image']['transform-crop']}}
+            {{ CODE_SAMPLES.templates['cl-image']['transform-autocrop']}}
         </code>
     </pre>
     <p style="text-align:center;">
@@ -72,4 +65,7 @@
             <p><b>Automatic fill</b></p>
         </span>
     </p>
+    <h2 class="chapter-header">Available transformations</h2>
+    <p>Please check the <a href="https://ekito.github.io/ng2-cloudinary/docs/classes/cloudinarytransforms.html">detailed documentation</a> for an exhaustive list of available transformations.</p>
+    <p>For more details about transformations options, check the <a href="http://cloudinary.com/documentation/image_transformation_reference" >cloudinary image transformation reference documentation</a></p>
 </div>

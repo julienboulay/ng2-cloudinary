@@ -15,7 +15,21 @@ export const CODE_SAMPLES: any = {
                 `,
             'transform-autocrop': `
                 <!-- demo.component.html -->
-                <cl-image public-id="basketball_in_net" [options]="options" width="200" height="300" crop="fill" gravity="auto"></cl-image>
+                <span>
+                    <cl-image public-id="basketball_in_net" [options]="options" height="200">
+                    </cl-image>
+                    <p><b>Original</b></p>
+                </span>
+                <span>
+                    <cl-image public-id="basketball_in_net" [options]="options" width="200" height="300" crop="fill" gravity="center">
+                    </cl-image>
+                    <p><b>Regular fill</b></p>
+                </span>
+                <span>
+                    <cl-image public-id="basketball_in_net" [options]="options" width="200" height="300" crop="fill" gravity="auto">
+                    </cl-image>
+                    <p><b>Automatic fill</b></p>
+                </span>
                 `
         }
     },

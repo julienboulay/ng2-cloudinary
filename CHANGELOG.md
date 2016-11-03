@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/ekito/ng2-cloudinary/compare/v0.5.1...v0.6.0) (2016-11-03)
+
+
+### Bug Fixes
+
+* **cl-image:** Change height, width, x and y to number primitive ([a8bc6b9](https://github.com/ekito/ng2-cloudinary/commit/a8bc6b9))
+
+
+### Features
+
+* **cl-image:** Add support for missing cloudinary's transformations ([ebf880d](https://github.com/ekito/ng2-cloudinary/commit/ebf880d))
+
+
+
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/ekito/ng2-cloudinary/compare/v0.5.0...v0.5.1) (2016-10-24)
 

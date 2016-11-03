@@ -67,8 +67,8 @@ describe('CloudinaryImage component', () => {
     clImageComponent.options = new CloudinaryOptions({
       cloud_name: 'ekito'
     });
-    clImageComponent.height = '100';
-    clImageComponent.width = '150';
+    clImageComponent.height = 100;
+    clImageComponent.width = 150;
     clImageComponent.publicId = 'testPublicId';
     clImageComponent.ngOnChanges(null);
     fixture.detectChanges();

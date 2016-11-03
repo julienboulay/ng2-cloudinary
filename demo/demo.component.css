@@ -4,6 +4,11 @@
     border-bottom: 1px solid #eee;
 }
 
+.chapter-header{
+    font-size: 24px;
+    margin: 40px 0 20px;
+}
+
 .example {
     padding: 20px;
 }
@@ -11,3 +16,4 @@
 .example p {
     margin: 30px 0 20px;
 }
+
