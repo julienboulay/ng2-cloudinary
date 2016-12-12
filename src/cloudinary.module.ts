@@ -4,11 +4,6 @@ import {FileDropDirective, FileSelectDirective} from 'ng2-file-upload';
 import {CloudinaryImageComponent} from './cloudinary-image.component';
 import {CloudinaryImageService} from './cloudinary-image.service';
 
-export {CloudinaryOptions} from './cloudinary-options.class';
-export {CloudinaryTransforms} from './cloudinary-transforms.class';
-export {CloudinaryUploader} from './cloudinary-uploader.service';
-export {CloudinaryImageService};
-
 @NgModule({
   declarations: [
     CloudinaryImageComponent,

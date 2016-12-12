@@ -3,7 +3,6 @@
     "target": "ES5",
     "module": "commonjs",
     "moduleResolution": "node",
-    // "outDir": "bin",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

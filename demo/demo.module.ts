@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
-import {Ng2CloudinaryModule} from './../ng2-cloudinary';
+import {Ng2CloudinaryModule} from '../src';
 import {Demo} from './demo.component';
 
 @NgModule({
