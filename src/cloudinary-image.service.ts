@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CloudinaryOptions } from './cloudinary-options.class.ts';
-import { CloudinaryTransforms } from './cloudinary-transforms.class.ts';
+import { CloudinaryOptions } from './cloudinary-options.class';
+import { CloudinaryTransforms } from './cloudinary-transforms.class';
 
 const CLOUDINARY_URL: string = 'https://res.cloudinary.com/';
 

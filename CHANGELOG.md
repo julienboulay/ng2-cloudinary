@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/ekito/ng2-cloudinary/compare/v0.6.0...v0.7.0) (2016-12-13)
+
+
+### Bug Fixes
+
+* **compile:** fix wrong imports with ts extensions ([f49927d](https://github.com/ekito/ng2-cloudinary/commit/f49927d))
+
+
+### Features
+
+* **build:** Upgrade yeoman generator (generator-angular-library) to latest version to enable aot co ([3cb23e6](https://github.com/ekito/ng2-cloudinary/commit/3cb23e6))
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/ekito/ng2-cloudinary/compare/v0.5.1...v0.6.0) (2016-11-03)
 
