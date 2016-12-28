@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/ekito/ng2-cloudinary/compare/v0.7.0...v0.8.0) (2016-12-28)
+
+
+### Bug Fixes
+
+* **file-upload:** Update ng2-file-upload version and import module ([03e77f3](https://github.com/ekito/ng2-cloudinary/commit/03e77f3))
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/ekito/ng2-cloudinary/compare/v0.6.0...v0.7.0) (2016-12-13)
 
