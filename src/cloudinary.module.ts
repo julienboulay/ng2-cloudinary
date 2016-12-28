@@ -1,20 +1,19 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FileDropDirective, FileSelectDirective} from 'ng2-file-upload';
+import {FileUploadModule} from 'ng2-file-upload';
 import {CloudinaryImageComponent} from './cloudinary-image.component';
 import {CloudinaryImageService} from './cloudinary-image.service';
 
 @NgModule({
   declarations: [
     CloudinaryImageComponent,
-    FileDropDirective,
-    FileSelectDirective
   ],
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    FileUploadModule
+  ],
   exports: [
     CloudinaryImageComponent,
-    FileDropDirective,
-    FileSelectDirective
   ],
   providers: [
     CloudinaryImageService

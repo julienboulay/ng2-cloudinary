@@ -97,6 +97,6 @@
     }
   },
   "dependencies": {
-    "ng2-file-upload": "^1.0.3"
+    "ng2-file-upload": "^1.1.2"
   }
 }
