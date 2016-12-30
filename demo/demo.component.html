@@ -1,11 +1,17 @@
 
 <div class="example">
-    <h1 class="page-header">Cloudinary image directive</h1>
+    <div>This demo provides usage example for:
+        <ul>
+            <li><a href="#cl-image-directive">cl-image directive</a></li>
+            <li><a href="#uploader-service">uploader service</a></li>
+        </ul>
+    </div> 
+    <h1 class="page-header" id="cl-image-directive">Cloudinary image directive</h1>
     
     <p>Initialize your app by creating a module called <code>DemoModule</code></p>
     <pre>
         <code class="language-typescript">
-            {{ CODE_SAMPLES.module }}
+            {{ CODE_SAMPLES.modules['cl-image'] }}
         </code>
     </pre>
     <p>Then create the <code>Demo</code> component with <code>CloudinaryOptions</code>. The <code>cloud_name</code> property is required.</p>
@@ -24,7 +30,7 @@
         </code>
     </pre>
     <p style="text-align:center;">
-        <cl-image public-id="sample" [options]="options" height="334" alt="Sample image" title="Sample image title"></cl-image>
+        <cl-image public-id="sample" cloud-name="demo" height="334" alt="Sample image" title="Sample image title"></cl-image>
     </p>
     <!-- 2nd example -->
     <h2 class="chapter-header">With a limited height</h2>
@@ -34,7 +40,7 @@
         </code>
     </pre>
     <p style="text-align:center;">
-        <cl-image public-id="sample" [options]="options" height="200" alt="Sample image" title="Sample image title"></cl-image>
+        <cl-image public-id="sample" cloud-name="demo" height="200" alt="Sample image" title="Sample image title"></cl-image>
     </p>
     <h2 class="chapter-header">Cropped to width and height</h2>
     <pre>
@@ -43,7 +49,7 @@
         </code>
     </pre>
     <p style="text-align:center;">
-        <cl-image public-id="sample" [options]="options" width="300" height="200" crop="crop"></cl-image>
+        <cl-image public-id="sample" cloud-name="demo" width="300" height="200" crop="crop"></cl-image>
     </p>
     <h2 class="chapter-header">With automatic cropping</h2>
     <pre>
@@ -53,19 +59,99 @@
     </pre>
     <p style="text-align:center;">
         <span style="display:inline-block;vertical-align:top;margin-left:10px;margin-right:10px">
-            <cl-image public-id="basketball_in_net" [options]="options" height="200"></cl-image>
+            <cl-image public-id="basketball_in_net" cloud-name="demo" height="200"></cl-image>
             <p><b>Original</b></p>
         </span>
         <span style="display:inline-block;vertical-align:top;margin-left:10px;margin-right:10px">
-            <cl-image public-id="basketball_in_net" [options]="options" width="200" height="300" crop="fill" gravity="center"></cl-image>
+            <cl-image public-id="basketball_in_net" cloud-name="demo" width="200" height="300" crop="fill" gravity="center"></cl-image>
             <p><b>Regular fill</b></p>
         </span>
         <span style="display:inline-block;vertical-align:top;margin-left:10px;margin-right:10px">
-            <cl-image public-id="basketball_in_net" [options]="options" width="200" height="300" crop="fill" gravity="auto"></cl-image>
+            <cl-image public-id="basketball_in_net" cloud-name="demo" width="200" height="300" crop="fill" gravity="auto"></cl-image>
             <p><b>Automatic fill</b></p>
         </span>
     </p>
     <h2 class="chapter-header">Available transformations</h2>
     <p>Please check the <a href="https://ekito.github.io/ng2-cloudinary/docs/classes/cloudinarytransforms.html">detailed documentation</a> for an exhaustive list of available transformations.</p>
     <p>For more details about transformations options, check the <a href="http://cloudinary.com/documentation/image_transformation_reference" >cloudinary image transformation reference documentation</a></p>
+
+    <h1 class="page-header" id="uploader-service">Cloudinary upload service</h1>
+    <p>To be able to upload images to cloudinary, add <code>FileUploadModule</code> to your <code>DemoModule</code> imports</p>
+    <pre>
+        <code class="language-typescript">
+            {{ CODE_SAMPLES.modules['upload'] }}
+        </code>
+    </pre>
+    
+    <div class="row">Then, there are two ways to upload images to Cloudinary:
+        <ul>
+            <li>By using an unsigned preset</li>
+            <li>By providing a signature in the payload, while uploading the image</li>
+        </ul>
+    </div> 
+
+    <h2 class="chapter-header">With an unsigned preset</h2>
+    <div>First create your unsigned preset in the Cloudinary administration UI
+        <ol>
+            <li>Connect to your Cloudinary account</li>
+            <li>Select <code>Settings/Upload</code> tab</li>
+            <li>
+                <span>At the bottom of the page you will find preset settings</span>
+                <div class="text-center">
+                    <cl-image public-id="ng2-cloudinary/cloudinary-activate-unsigned-upload-preset" width="800" cloud-name="ekito"></cl-image>
+                </div>
+            </li>
+            <li>Select <code>Enable unsigned uploading</code> or <code>Add upload preset</code></li>
+            <li>
+                <span>Set the new preset name and verify that <code>Mode: unsigned</code> is selected.</span>
+                <span>(<code>Use filename: no</code> option will allow you to import the same image multiple times)</span>
+                <div class="text-center">
+                    <cl-image public-id="v1483011743/ng2-cloudinary/cloudinary-new-unsigned-upload-preset" width="800" cloud-name="ekito"></cl-image>
+                </div>
+            </li> 
+        </ol>
+    </div>
+
+    <p>Then implement the component class and its template as following :</p>
+    <pre>
+        <code class="language-typescript">
+            {{ CODE_SAMPLES.components['unsigned-upload'] }}
+        </code>
+    </pre>
+    
+    <pre>
+        <code class="language-markup">
+            {{ CODE_SAMPLES.templates['upload']['unsigned'] }}
+        </code>
+    </pre>
+    
+    <p>With the following demo, you will be able to upload an image to your own Cloudinary account.</p>
+    <p>Provide your cloud_name and unsigned preset created previously.</p>
+
+    <div class="row">
+        <div class="form-group col-xs-12 col-sm-6">
+            <label for="userCloudName">Cloud name</label>
+            <input type="text" class="form-control" id="userCloudName" [(ngModel)]="userCloudName" placeholder="Your cloudinary cloud name">
+        </div>
+        <div class="form-group col-xs-12 col-sm-6">
+            <label for="userPreset">Upload preset (unsigned)</label>
+            <input type="text" class="form-control" id="userPreset" [(ngModel)]="userPreset" placeholder="Upload preset (unsigned)">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 text-center">
+            <input type="file" ng2FileSelect [uploader]="uploader" style="margin: 15px;" [disabled]="!userCloudName || !userPreset" accept="image/*;capture=camera">
+        </div>
+        <div class="col-xs-12 col-sm-6 text-center">
+            <input class="btn btn-primary" style="width: 150px;margin: 15px;" type="button" value="Upload" (click)="upload()">
+        </div>
+    </div>
+    <div class="row text-center">    
+        <cl-image [public-id]="imageId" [cloud-name]="cloudName" [type]="type"
+            [width]="width" crop="fit" ></cl-image>
+    </div>
+
+    <h2 class="chapter-header">With a signature</h2>
+    <div>Coming soon...</div>
+    
 </div>

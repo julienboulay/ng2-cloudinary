@@ -7,10 +7,11 @@ const CLOUDINARY_URL: string = 'https://res.cloudinary.com/';
 @Injectable()
 export class CloudinaryImageService {
 
-    getImageUrl(publicId: string, options: CloudinaryOptions, transforms: CloudinaryTransforms): string {
+    getImageUrl(publicId: string, cloudName: string, resourceType: string, type: string, transforms: CloudinaryTransforms): string {
         return  CLOUDINARY_URL +
-            options.cloud_name + '/' +
-            'image/upload/' +
+            cloudName + '/' +
+            resourceType + '/' +
+            type + '/' +
             transforms.toUrlSegment() +
             publicId + '.' + (transforms.format || 'jpg');
 

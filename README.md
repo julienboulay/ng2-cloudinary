@@ -33,20 +33,43 @@ npm install --save ng2-cloudinary
 
 You may also find it useful to view the [demo source](https://github.com/ekito/ng2-cloudinary/blob/master/demo/demo.component.ts).
 
+### Module imports
+
+```typescript
+//demo.module.ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { Ng2CloudinaryModule } from './../ng2-cloudinary';
+import { FileUploadModule } from 'ng2-file-upload';
+import { Demo } from './demo.component';
+
+@NgModule({
+    declarations: [Demo],
+    imports: [
+        BrowserModule,
+        Ng2CloudinaryModule,
+        FileUploadModule
+    ],
+    bootstrap: [Demo]
+})
+export class DemoModule {}
+```
+
 ### cl-image or CloudinaryImageComponent
 
 This directive allows displaying Cloudinary image and apply transformations 
 
 ```typescript
+//demo.component.ts
 import {Component} from '@angular/core';
 import {CloudinaryImageComponent} from 'ng2-cloudinary';
 
 @Component({
   selector: 'demo-app',
-  template: '<cl-image public-id="public_cloudinary_id" [options]="options"></cl-image>'
+  template: '<cl-image public-id="image_id" cloud-name="myCloudName"></cl-image>'
 })
-export class DemoApp {
-  options: new CloudinaryOptions({ cloud_name: 'ekito'});
+export class Demo {
 }
 ```
 
@@ -55,30 +78,28 @@ export class DemoApp {
 This service allows uploading files to cloudinary using ng2-file-upload dependency.
 
 ```typescript
+//demo.component.ts
+import { Component } from '@angular/core';
+import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
+
 @Component({
   selector: 'demo-app',
   template: '<input type="file" ng2FileSelect [uploader]="uploader"/>',
 })
-export class DemoApp {
+export class Demo {
 
   cloudinaryImage: any;
 
-  cloudinaryOptions: CloudinaryOptions = new CloudinaryOptions({
-    cloud_name: 'ekito',
-    upload_preset: '1234abcd',
-    autoUpload: true
-  });
-
-  uploader: CloudinaryUploader = new CloudinaryUploader(this.cloudinaryOptions);
+  uploader: CloudinaryUploader = new CloudinaryUploader(
+    new CloudinaryOptions({ cloudName: 'myCloudName', uploadPreset: 'myUnsignedPreset' })
+  );
 
   constructor(){
-    let _self = this;
-
     //Override onSuccessItem function to record cloudinary response data
-    this.uploader.onSuccessItem = function(item: any, response: string, status: number, headers: any) {
+    this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any) => {
       //response is the cloudinary response
       //see http://cloudinary.com/documentation/upload_images#upload_response
-      _self.cloudinaryImage = JSON.parse(response);
+      this.cloudinaryImage = JSON.parse(response);
       
       return {item, response, status, headers};
     };

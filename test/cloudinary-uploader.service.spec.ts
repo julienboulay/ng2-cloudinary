@@ -20,17 +20,19 @@ class FormDataMock {
 
 describe('CloudinaryUploader service', () => {
 
-  it('should configure upload_preset when preparing item upload', () => {
+  it('should configure uploadPreset when preparing item upload', () => {
     let uploader: CloudinaryUploader = new CloudinaryUploader(new CloudinaryOptions({
-      cloud_name: 'ekito',
-      upload_preset: 'preset'}));
+      cloudName: 'ekito',
+      uploadPreset: 'preset'
+    }));
     let res: any = uploader.onBuildItemForm({}, new FormDataMock());
     expect(res.form.get('upload_preset')).to.equal('preset');
   });
 
   it('should not use app credentials when preparing item upload', () => {
     let uploader: CloudinaryUploader = new CloudinaryUploader(new CloudinaryOptions({
-      cloud_name: 'ekito'
+      cloudName: 'ekito',
+      uploadPreset: 'preset'
     }));
     let res: any = uploader.onBuildItemForm({}, new FormDataMock());
     expect(res.fileItem.withCredentials).to.equal(false);

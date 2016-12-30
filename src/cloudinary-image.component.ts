@@ -1,33 +1,31 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { CloudinaryOptions } from './cloudinary-options.class';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CloudinaryTransforms } from './cloudinary-transforms.class';
 import { CloudinaryImageService } from './cloudinary-image.service';
 
 @Component({
-  selector: 'cl-image',
-  template: `
+    selector: 'cl-image',
+    template: `
     <img [src]="imageUrl" [title]="title || ''" [alt]="alt || ''">
   `
 })
-export class CloudinaryImageComponent implements OnInit, OnChanges {
+export class CloudinaryImageComponent implements OnChanges {
     imageUrl: string = '';
     transforms: CloudinaryTransforms = new CloudinaryTransforms();
 
     @Input('public-id') publicId: string;
-    @Input() options: CloudinaryOptions;
+    @Input('cloud-name') cloudName: string;
+    @Input() type: string;
     @Input() title: string;
     @Input() alt: string;
 
     constructor(private _imageService: CloudinaryImageService) { }
 
-    ngOnInit(): void {
-      if (!this.options) throw new Error('CloudinaryOptions are required for cl-image component');
-    }
-
     ngOnChanges(changes: SimpleChanges): void {
-        if (this.publicId && this.options) {
-            this.imageUrl = this._imageService.getImageUrl(this.publicId, this.options, this.transforms);
-        }else {
+        if (this.publicId && this.cloudName) {
+            const resourceType: string = 'image';
+            const type: string = this.type || 'upload';
+            this.imageUrl = this._imageService.getImageUrl(this.publicId, this.cloudName, resourceType, type, this.transforms);
+        } else {
             this.imageUrl = '';
         }
     }
@@ -73,7 +71,7 @@ export class CloudinaryImageComponent implements OnInit, OnChanges {
     }
 
     @Input()
-    set format(value: string){
+    set format(value: string) {
         this.transforms.format = value;
     }
 

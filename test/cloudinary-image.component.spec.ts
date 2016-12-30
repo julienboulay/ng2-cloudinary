@@ -22,9 +22,7 @@ describe('CloudinaryImage component', () => {
   it('should create img DOM element', () => {
     const fixture: ComponentFixture<CloudinaryImageComponent> = TestBed.createComponent(CloudinaryImageComponent);
     const clImageComponent: CloudinaryImageComponent = fixture.componentInstance;
-    clImageComponent.options = new CloudinaryOptions({
-      cloud_name: 'ekito'
-    });
+    clImageComponent.cloudName = 'ekito';
     fixture.detectChanges();
     expect(fixture.nativeElement.innerHTML.trim()).to.contain('img');
     expect(fixture.nativeElement.innerHTML.trim()).to.contain('src=""');
@@ -33,9 +31,7 @@ describe('CloudinaryImage component', () => {
   it('should create img DOM element without publicId', () => {
     const fixture: ComponentFixture<CloudinaryImageComponent> = TestBed.createComponent(CloudinaryImageComponent);
     const clImageComponent: CloudinaryImageComponent = fixture.componentInstance;
-    clImageComponent.options = new CloudinaryOptions({
-      cloud_name: 'ekito'
-    });
+    clImageComponent.cloudName = 'ekito';
     clImageComponent.publicId = null;
     fixture.detectChanges();
 
@@ -48,9 +44,7 @@ describe('CloudinaryImage component', () => {
   it('should create img DOM element with publicId', () => {
     const fixture: ComponentFixture<CloudinaryImageComponent> = TestBed.createComponent(CloudinaryImageComponent);
     const clImageComponent: CloudinaryImageComponent = fixture.componentInstance;
-    clImageComponent.options = new CloudinaryOptions({
-      cloud_name: 'ekito'
-    });
+    clImageComponent.cloudName = 'ekito';
     clImageComponent.publicId = 'testPublicId';
     clImageComponent.ngOnChanges(null);
     fixture.detectChanges();
@@ -64,9 +58,7 @@ describe('CloudinaryImage component', () => {
   it('should create img DOM element with transformations', () => {
     const fixture: ComponentFixture<CloudinaryImageComponent> = TestBed.createComponent(CloudinaryImageComponent);
     const clImageComponent: CloudinaryImageComponent = fixture.componentInstance;
-    clImageComponent.options = new CloudinaryOptions({
-      cloud_name: 'ekito'
-    });
+    clImageComponent.cloudName = 'ekito';
     clImageComponent.height = 100;
     clImageComponent.width = 150;
     clImageComponent.publicId = 'testPublicId';
@@ -82,9 +74,7 @@ describe('CloudinaryImage component', () => {
   it('should create img DOM element with title and alt', () => {
     const fixture: ComponentFixture<CloudinaryImageComponent> = TestBed.createComponent(CloudinaryImageComponent);
     const clImageComponent: CloudinaryImageComponent = fixture.componentInstance;
-    clImageComponent.options = new CloudinaryOptions({
-      cloud_name: 'ekito'
-    });
+    clImageComponent.cloudName = 'ekito';
     clImageComponent.publicId = 'testPublicId';
     clImageComponent.title = 'testTitle';
     clImageComponent.alt = 'testAlt';
