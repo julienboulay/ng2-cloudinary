@@ -923,13 +923,37 @@ img { max-width: 100%; }
 			<a href="classes/cloudinaryuploader.html" class="tsd-kind-icon">Cloudinary<wbr>Uploader</a>
 		</li>
 		<li class=" tsd-kind-class">
+			<a href="classes/demo.html" class="tsd-kind-icon">Demo</a>
+		</li>
+		<li class=" tsd-kind-class">
+			<a href="classes/demomodule.html" class="tsd-kind-icon">Demo<wbr>Module</a>
+		</li>
+		<li class=" tsd-kind-class tsd-is-not-exported">
+			<a href="classes/formdatamock.html" class="tsd-kind-icon">Form<wbr>Data<wbr>Mock</a>
+		</li>
+		<li class=" tsd-kind-class">
 			<a href="classes/ng2cloudinarymodule.html" class="tsd-kind-icon">Ng2<wbr>Cloudinary<wbr>Module</a>
 		</li>
 		<li class=" tsd-kind-variable tsd-is-not-exported">
 			<a href="globals.html#cloudinary_url" class="tsd-kind-icon">CLOUDINARY_<wbr>URL</a>
 		</li>
 		<li class=" tsd-kind-variable tsd-is-not-exported">
+			<a href="globals.html#env" class="tsd-kind-icon">ENV</a>
+		</li>
+		<li class=" tsd-kind-variable tsd-is-not-exported">
+			<a href="globals.html#prism" class="tsd-kind-icon">Prism</a>
+		</li>
+		<li class=" tsd-kind-variable tsd-is-not-exported">
 			<a href="globals.html#upload_endpoint" class="tsd-kind-icon">UPLOAD_<wbr>ENDPOINT</a>
+		</li>
+		<li class=" tsd-kind-variable tsd-is-not-exported">
+			<a href="globals.html#require" class="tsd-kind-icon">require</a>
+		</li>
+		<li class=" tsd-kind-variable tsd-is-not-exported">
+			<a href="globals.html#testscontext" class="tsd-kind-icon">tests<wbr>Context</a>
+		</li>
+		<li class=" tsd-kind-object-literal">
+			<a href="globals.html#code_samples" class="tsd-kind-icon">CODE_<wbr>SAMPLES</a>
 		</li>
 	</ul>
 </nav>
@@ -961,45 +985,63 @@ img { max-width: 100%; }
 			<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save ng2-cloudinary</span>
 </code></pre><h2 id="usage">Usage</h2>
 			<p>You may also find it useful to view the <a href="https://github.com/ekito/ng2-cloudinary/blob/master/demo/demo.component.ts">demo source</a>.</p>
+			<h3 id="module-imports">Module imports</h3>
+			<pre><code class="lang-typescript"><span class="hljs-comment">//demo.module.ts</span>
+<span class="hljs-keyword">import</span> { NgModule } from <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { BrowserModule } from <span class="hljs-string">'@angular/platform-browser'</span>;
+
+<span class="hljs-keyword">import</span> { Ng2CloudinaryModule } from <span class="hljs-string">'./../ng2-cloudinary'</span>;
+<span class="hljs-keyword">import</span> { FileUploadModule } from <span class="hljs-string">'ng2-file-upload'</span>;
+<span class="hljs-keyword">import</span> { Demo } from <span class="hljs-string">'./demo.component'</span>;
+
+<span class="hljs-meta">@NgModule</span>({
+    declarations: [Demo],
+    imports: [
+        BrowserModule,
+        Ng2CloudinaryModule,
+        FileUploadModule
+    ],
+    bootstrap: [Demo]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DemoModule {}
+</code></pre>
 			<h3 id="cl-image-or-cloudinaryimagecomponent">cl-image or CloudinaryImageComponent</h3>
 			<p>This directive allows displaying Cloudinary image and apply transformations </p>
-			<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {Component} from <span class="hljs-string">'@angular/core'</span>;
+			<pre><code class="lang-typescript"><span class="hljs-comment">//demo.component.ts</span>
+<span class="hljs-keyword">import</span> {Component} from <span class="hljs-string">'@angular/core'</span>;
 <span class="hljs-keyword">import</span> {CloudinaryImageComponent} from <span class="hljs-string">'ng2-cloudinary'</span>;
 
-@Component({
+<span class="hljs-meta">@Component</span>({
   selector: <span class="hljs-string">'demo-app'</span>,
-  template: <span class="hljs-string">'&lt;cl-image public-id="public_cloudinary_id" [options]="options"&gt;&lt;/cl-image&gt;'</span>
+  template: <span class="hljs-string">'&lt;cl-image public-id="image_id" cloud-name="myCloudName"&gt;&lt;/cl-image&gt;'</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DemoApp {
-  options: <span class="hljs-keyword">new</span> CloudinaryOptions({ cloud_name: <span class="hljs-string">'ekito'</span>});
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> Demo {
 }
 </code></pre>
 			<h3 id="cloudinaryuploader">CloudinaryUploader</h3>
 			<p>This service allows uploading files to cloudinary using ng2-file-upload dependency.</p>
-			<pre><code class="lang-typescript">@Component({
+			<pre><code class="lang-typescript"><span class="hljs-comment">//demo.component.ts</span>
+<span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { CloudinaryOptions, CloudinaryUploader } from <span class="hljs-string">'ng2-cloudinary'</span>;
+
+<span class="hljs-meta">@Component</span>({
   selector: <span class="hljs-string">'demo-app'</span>,
   template: <span class="hljs-string">'&lt;input type="file" ng2FileSelect [uploader]="uploader"/&gt;'</span>,
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DemoApp {
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> Demo {
 
   cloudinaryImage: <span class="hljs-built_in">any</span>;
 
-  cloudinaryOptions: CloudinaryOptions = <span class="hljs-keyword">new</span> CloudinaryOptions({
-    cloud_name: <span class="hljs-string">'ekito'</span>,
-    upload_preset: <span class="hljs-string">'1234abcd'</span>,
-    autoUpload: <span class="hljs-literal">true</span>
-  });
+  uploader: CloudinaryUploader = <span class="hljs-keyword">new</span> CloudinaryUploader(
+    <span class="hljs-keyword">new</span> CloudinaryOptions({ cloudName: <span class="hljs-string">'myCloudName'</span>, uploadPreset: <span class="hljs-string">'myUnsignedPreset'</span> })
+  );
 
-  uploader: CloudinaryUploader = <span class="hljs-keyword">new</span> CloudinaryUploader(<span class="hljs-keyword">this</span>.cloudinaryOptions);
-
-  <span class="hljs-keyword">constructor</span>(){
-    <span class="hljs-keyword">let</span> _self = <span class="hljs-keyword">this</span>;
-
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>){
     <span class="hljs-comment">//Override onSuccessItem function to record cloudinary response data</span>
-    <span class="hljs-keyword">this</span>.uploader.onSuccessItem = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item: <span class="hljs-built_in">any</span>, response: <span class="hljs-built_in">string</span>, status: <span class="hljs-built_in">number</span>, headers: <span class="hljs-built_in">any</span></span>) </span>{
+    <span class="hljs-keyword">this</span>.uploader.onSuccessItem = (item: <span class="hljs-built_in">any</span>, response: <span class="hljs-built_in">string</span>, status: <span class="hljs-built_in">number</span>, headers: <span class="hljs-built_in">any</span>) =&gt; {
       <span class="hljs-comment">//response is the cloudinary response</span>
       <span class="hljs-comment">//see http://cloudinary.com/documentation/upload_images#upload_response</span>
-      _self.cloudinaryImage = <span class="hljs-built_in">JSON</span>.parse(response);
+      <span class="hljs-keyword">this</span>.cloudinaryImage = <span class="hljs-built_in">JSON</span>.parse(response);
 
       <span class="hljs-keyword">return</span> {item, response, status, headers};
     };
@@ -1039,6 +1081,9 @@ img { max-width: 100%; }
 							<li class="tsd-kind-class"><a href="classes/cloudinaryoptions.html" class="tsd-kind-icon">Cloudinary<wbr>Options</a></li>
 							<li class="tsd-kind-class"><a href="classes/cloudinarytransforms.html" class="tsd-kind-icon">Cloudinary<wbr>Transforms</a></li>
 							<li class="tsd-kind-class"><a href="classes/cloudinaryuploader.html" class="tsd-kind-icon">Cloudinary<wbr>Uploader</a></li>
+							<li class="tsd-kind-class"><a href="classes/demo.html" class="tsd-kind-icon">Demo</a></li>
+							<li class="tsd-kind-class"><a href="classes/demomodule.html" class="tsd-kind-icon">Demo<wbr>Module</a></li>
+							<li class="tsd-kind-class tsd-is-not-exported"><a href="classes/formdatamock.html" class="tsd-kind-icon">Form<wbr>Data<wbr>Mock</a></li>
 							<li class="tsd-kind-class"><a href="classes/ng2cloudinarymodule.html" class="tsd-kind-icon">Ng2<wbr>Cloudinary<wbr>Module</a></li>
 						</ul>
 					</section>
@@ -1046,7 +1091,17 @@ img { max-width: 100%; }
 						<h3>Variables</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#cloudinary_url" class="tsd-kind-icon">CLOUDINARY_<wbr>URL</a></li>
+							<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#env" class="tsd-kind-icon">ENV</a></li>
+							<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#prism" class="tsd-kind-icon">Prism</a></li>
 							<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#upload_endpoint" class="tsd-kind-icon">UPLOAD_<wbr>ENDPOINT</a></li>
+							<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#require" class="tsd-kind-icon">require</a></li>
+							<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#testscontext" class="tsd-kind-icon">tests<wbr>Context</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section ">
+						<h3>Object literals</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-object-literal"><a href="globals.html#code_samples" class="tsd-kind-icon">CODE_<wbr>SAMPLES</a></li>
 						</ul>
 					</section>
 				</div>
@@ -1060,7 +1115,27 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">CLOUDINARY_<wbr>URL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;https://res.cloudinary.com/&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/658a14a/src/cloudinary-image.service.ts#L5">cloudinary-image.service.ts:5</a></li>
+						<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/src/cloudinary-image.service.ts#L5">src/cloudinary-image.service.ts:5</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
+				<a name="env" class="tsd-anchor"></a>
+				<h3>ENV</h3>
+				<div class="tsd-signature tsd-kind-icon">ENV<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/entry.ts#L7">demo/entry.ts:7</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
+				<a name="prism" class="tsd-anchor"></a>
+				<h3>Prism</h3>
+				<div class="tsd-signature tsd-kind-icon">Prism<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/demo.component.ts#L6">demo/demo.component.ts:6</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1070,9 +1145,182 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">UPLOAD_<wbr>ENDPOINT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;https://api.cloudinary.com/v1_1/&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/658a14a/src/cloudinary-uploader.service.ts#L5">cloudinary-uploader.service.ts:5</a></li>
+						<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/src/cloudinary-uploader.service.ts#L5">src/cloudinary-uploader.service.ts:5</a></li>
 					</ul>
 				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
+				<a name="require" class="tsd-anchor"></a>
+				<h3>require</h3>
+				<div class="tsd-signature tsd-kind-icon">require<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/test/entry.ts#L21">test/entry.ts:21</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
+				<a name="testscontext" class="tsd-anchor"></a>
+				<h3>tests<wbr>Context</h3>
+				<div class="tsd-signature tsd-kind-icon">tests<wbr>Context<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require.context(&#x27;./&#x27;, true, /\.spec/)</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/test/entry.ts#L22">test/entry.ts:22</a></li>
+					</ul>
+				</aside>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Object literals</h2>
+			<section class="tsd-panel tsd-member tsd-kind-object-literal">
+				<a name="code_samples" class="tsd-anchor"></a>
+				<h3>CODE_<wbr>SAMPLES</h3>
+				<div class="tsd-signature tsd-kind-icon">CODE_<wbr>SAMPLES<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L1">demo/code-samples.constant.ts:1</a></li>
+					</ul>
+				</aside>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+					<a name="code_samples.components" class="tsd-anchor"></a>
+					<h3>components</h3>
+					<div class="tsd-signature tsd-kind-icon">components<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L47">demo/code-samples.constant.ts:47</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="code_samples.components.cl_image" class="tsd-anchor"></a>
+						<h3>cl-<wbr>image</h3>
+						<div class="tsd-signature tsd-kind-icon">cl-<wbr>image<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;//demo.component.tsimport {Component} from &#x27;@angular/core&#x27;;@Component({selector: &#x27;demo-app&#x27;,templateUrl: &#x27;demo.component.html&#x27;})export class Demo {}&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L48">demo/code-samples.constant.ts:48</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="code_samples.components.unsigned_upload" class="tsd-anchor"></a>
+						<h3>unsigned-<wbr>upload</h3>
+						<div class="tsd-signature tsd-kind-icon">unsigned-<wbr>upload<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;//demo.component.tsimport { Component } from &#x27;@angular/core&#x27;;import { CloudinaryOptions, CloudinaryUploader } from &#x27;ng2-cloudinary&#x27;;@Component({selector: &#x27;demo-app&#x27;,templateUrl: &#x27;demo.component.html&#x27;})export class Demo {imageId: string;uploader: CloudinaryUploader &#x3D; new CloudinaryUploader(new CloudinaryOptions({ cloudName: &#x27;myCloudName&#x27;, uploadPreset: &#x27;myUnsignedPreset&#x27; }));constructor(){//Override onSuccessItem to retrieve the imageIdthis.uploader.onSuccessItem &#x3D; (item: any, response: string, status: number, headers: any): any &#x3D;&gt; {let res: any &#x3D; JSON.parse(response);this.imageId &#x3D; res.public_id;return { item, response, status, headers };};}upload() {this.uploader.uploadAll();}}&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L59">demo/code-samples.constant.ts:59</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+					<a name="code_samples.modules" class="tsd-anchor"></a>
+					<h3>modules</h3>
+					<div class="tsd-signature tsd-kind-icon">modules<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L91">demo/code-samples.constant.ts:91</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="code_samples.modules.cl_image-1" class="tsd-anchor"></a>
+						<h3>cl-<wbr>image</h3>
+						<div class="tsd-signature tsd-kind-icon">cl-<wbr>image<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;//demo.module.tsimport { NgModule } from &#x27;@angular/core&#x27;;import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;import { Ng2CloudinaryModule } from &#x27;./../ng2-cloudinary&#x27;;import { Demo } from &#x27;./demo.component&#x27;;@NgModule({declarations: [Demo],imports: [BrowserModule,Ng2CloudinaryModule],bootstrap: [Demo]})export class DemoModule {}&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L92">demo/code-samples.constant.ts:92</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="code_samples.modules.upload" class="tsd-anchor"></a>
+						<h3>upload</h3>
+						<div class="tsd-signature tsd-kind-icon">upload<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;//demo.module.tsimport { NgModule } from &#x27;@angular/core&#x27;;import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;import { Ng2CloudinaryModule } from &#x27;./../ng2-cloudinary&#x27;;import { FileUploadModule } from &#x27;ng2-file-upload&#x27;;import { Demo } from &#x27;./demo.component&#x27;;@NgModule({declarations: [Demo],imports: [BrowserModule,Ng2CloudinaryModule,FileUploadModule],bootstrap: [Demo]})export class DemoModule {}&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L110">demo/code-samples.constant.ts:110</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+					<a name="code_samples.templates" class="tsd-anchor"></a>
+					<h3>templates</h3>
+					<div class="tsd-signature tsd-kind-icon">templates<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L2">demo/code-samples.constant.ts:2</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="code_samples.templates.cl_image-2" class="tsd-anchor"></a>
+						<h3>cl-<wbr>image</h3>
+						<div class="tsd-signature tsd-kind-icon">cl-<wbr>image<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L3">demo/code-samples.constant.ts:3</a></li>
+							</ul>
+						</aside>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="code_samples.templates.cl_image-2.simple" class="tsd-anchor"></a>
+							<h3>simple</h3>
+							<div class="tsd-signature tsd-kind-icon">simple<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;&lt;!-- demo.component.html --&gt;&lt;cl-image public-id&#x3D;&quot;sample&quot; cloud-name&#x3D;&quot;demo&quot;&gt;&lt;/cl-image&gt;&#x60;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L4">demo/code-samples.constant.ts:4</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="code_samples.templates.cl_image-2.transform_autocrop" class="tsd-anchor"></a>
+							<h3>transform-<wbr>autocrop</h3>
+							<div class="tsd-signature tsd-kind-icon">transform-<wbr>autocrop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;&lt;!-- demo.component.html --&gt;&lt;span&gt;&lt;cl-image public-id&#x3D;&quot;basketball_in_net&quot; cloud-name&#x3D;&quot;demo&quot; height&#x3D;&quot;200&quot;&gt;&lt;/cl-image&gt;&lt;p&gt;&lt;b&gt;Original&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;span&gt;&lt;cl-image public-id&#x3D;&quot;basketball_in_net&quot; cloud-name&#x3D;&quot;demo&quot; width&#x3D;&quot;200&quot; height&#x3D;&quot;300&quot; crop&#x3D;&quot;fill&quot; gravity&#x3D;&quot;center&quot;&gt;&lt;/cl-image&gt;&lt;p&gt;&lt;b&gt;Regular fill&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;span&gt;&lt;cl-image public-id&#x3D;&quot;basketball_in_net&quot; cloud-name&#x3D;&quot;demo&quot; width&#x3D;&quot;200&quot; height&#x3D;&quot;300&quot; crop&#x3D;&quot;fill&quot; gravity&#x3D;&quot;auto&quot;&gt;&lt;/cl-image&gt;&lt;p&gt;&lt;b&gt;Automatic fill&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&#x60;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L16">demo/code-samples.constant.ts:16</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="code_samples.templates.cl_image-2.transform_crop" class="tsd-anchor"></a>
+							<h3>transform-<wbr>crop</h3>
+							<div class="tsd-signature tsd-kind-icon">transform-<wbr>crop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;&lt;!-- demo.component.html --&gt;&lt;cl-image public-id&#x3D;&quot;sample&quot; cloud-name&#x3D;&quot;demo&quot; width&#x3D;&quot;300&quot; height&#x3D;&quot;200&quot; crop&#x3D;&quot;crop&quot;&gt;&lt;/cl-image&gt;&#x60;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L12">demo/code-samples.constant.ts:12</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="code_samples.templates.cl_image-2.transform_height" class="tsd-anchor"></a>
+							<h3>transform-<wbr>height</h3>
+							<div class="tsd-signature tsd-kind-icon">transform-<wbr>height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;&lt;!-- demo.component.html --&gt;&lt;cl-image public-id&#x3D;&quot;sample&quot; cloud-name&#x3D;&quot;demo&quot; height&#x3D;&quot;200&quot;&gt;&lt;/cl-image&gt;&#x60;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L8">demo/code-samples.constant.ts:8</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="code_samples.templates.upload-1" class="tsd-anchor"></a>
+						<h3>upload</h3>
+						<div class="tsd-signature tsd-kind-icon">upload<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L35">demo/code-samples.constant.ts:35</a></li>
+							</ul>
+						</aside>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="code_samples.templates.upload-1.unsigned" class="tsd-anchor"></a>
+							<h3>unsigned</h3>
+							<div class="tsd-signature tsd-kind-icon">unsigned<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;&lt;!-- demo.component.html --&gt;&lt;input type&#x3D;&quot;file&quot; ng2FileSelect [uploader]&#x3D;&quot;uploader&quot; accept&#x3D;&quot;image/*;capture&#x3D;camera&quot;&gt;&lt;button (click)&#x3D;&quot;upload()&quot;&gt;Upload&lt;/button&gt;&lt;cl-image [public-id]&#x3D;&quot;imageId&quot; [cloud-name]&#x3D;&quot;uploader.cloudName&quot;&gt;&lt;/cl-image&gt;&#x60;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Ekito/ng2-cloudinary/blob/9946dd7/demo/code-samples.constant.ts#L36">demo/code-samples.constant.ts:36</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+				</section>
 			</section>
 		</section>
 		<footer class="with-border-bottom">
