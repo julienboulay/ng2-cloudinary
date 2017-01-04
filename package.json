@@ -1,6 +1,6 @@
 {
   "name": "ng2-cloudinary",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "",
   "main": "./dist/umd/ng2-cloudinary.js",
   "module": "./dist/esm/src/index.js",
