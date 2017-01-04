@@ -53,7 +53,7 @@ export class Demo implements AfterViewChecked {
         return Prism.highlightAll();
     }
 
-    upload() {
+    upload(): void {
         this.uploader.uploadAll();
     }
 }
