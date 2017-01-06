@@ -1,6 +1,6 @@
 {
   "name": "ng2-cloudinary",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "",
   "main": "./dist/umd/ng2-cloudinary.js",
   "module": "./dist/esm/src/index.js",
@@ -84,7 +84,7 @@
     "zone.js": "^0.6.12"
   },
   "peerDependencies": {
-    "@angular/core": "^2.0.0"
+    "@angular/core": "^2.2.0"
   },
   "files": [
     "dist"
@@ -98,6 +98,6 @@
     }
   },
   "dependencies": {
-    "ng2-file-upload": "^1.1.2"
+    "ng2-file-upload": "1.1.4-2"
   }
 }

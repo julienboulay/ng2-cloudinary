@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.2"></a>
+## [0.9.2](https://github.com/ekito/ng2-cloudinary/compare/v0.9.1...v0.9.2) (2017-01-06)
+
+
+### Bug Fixes
+
+* **compile:** Fix compilation issue with ng2-file-upload module ([85ff1d9](https://github.com/ekito/ng2-cloudinary/commit/85ff1d9))
+
+
+
 <a name="0.9.1"></a>
 ## [0.9.1](https://github.com/ekito/ng2-cloudinary/compare/v0.9.0...v0.9.1) (2017-01-04)
 
