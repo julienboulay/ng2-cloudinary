@@ -8,14 +8,22 @@ const CLOUDINARY_URL: string = 'https://res.cloudinary.com/';
 export class CloudinaryImageService {
 
     getImageUrl(publicId: string, cloudName: string, resourceType: string, type: string, transforms: CloudinaryTransforms): string {
-        return  CLOUDINARY_URL +
-            cloudName + '/' +
-            resourceType + '/' +
-            type + '/' +
-            transforms.toUrlSegment() +
-            publicId + '.' + (transforms.format || 'jpg');
 
+    let constuctedURL : string = CLOUDINARY_URL +
+      cloudName + '/' +
+      resourceType + '/' +
+      type + '/' +
+      transforms.toUrlSegment() + publicId;
+
+    // Permit format to be unset
+    // If unset, Cloudinary returns the image in the format that it was uploaded in
+    if (transforms.format) {
+      constuctedURL += '.' + transforms.format;
     }
+
+    return constuctedURL;
+
+  }
 }
 
 
