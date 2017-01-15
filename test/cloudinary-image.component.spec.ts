@@ -49,7 +49,7 @@ describe('CloudinaryImage component', () => {
     clImageComponent.ngOnChanges(null);
     fixture.detectChanges();
 
-    let expectedImageUrl: string = 'https://res.cloudinary.com/ekito/image/upload/testPublicId.jpg';
+    let expectedImageUrl: string = 'https://res.cloudinary.com/ekito/image/upload/testPublicId';
     expect(clImageComponent.imageUrl).to.equal(expectedImageUrl);
     expect(fixture.nativeElement.innerHTML.trim()).to.contain('img');
     expect(fixture.nativeElement.innerHTML.trim()).to.contain('src="' + expectedImageUrl + '"');
@@ -65,7 +65,7 @@ describe('CloudinaryImage component', () => {
     clImageComponent.ngOnChanges(null);
     fixture.detectChanges();
 
-    let expectedImageUrl: string = 'https://res.cloudinary.com/ekito/image/upload/h_100,w_150/testPublicId.jpg';
+    let expectedImageUrl: string = 'https://res.cloudinary.com/ekito/image/upload/h_100,w_150/testPublicId';
     expect(clImageComponent.imageUrl).to.equal(expectedImageUrl);
     expect(fixture.nativeElement.innerHTML.trim()).to.contain('img');
     expect(fixture.nativeElement.innerHTML.trim()).to.contain('src="' + expectedImageUrl + '"');
@@ -81,7 +81,7 @@ describe('CloudinaryImage component', () => {
     clImageComponent.ngOnChanges(null);
     fixture.detectChanges();
 
-    let expectedImageUrl: string = 'https://res.cloudinary.com/ekito/image/upload/testPublicId.jpg';
+    let expectedImageUrl: string = 'https://res.cloudinary.com/ekito/image/upload/testPublicId';
     expect(clImageComponent.imageUrl).to.equal(expectedImageUrl);
     expect(fixture.nativeElement.innerHTML.trim()).to.contain('img');
     expect(fixture.nativeElement.innerHTML.trim()).to.contain('src="' + expectedImageUrl + '"');
