@@ -1,4 +1,7 @@
 # ng2-cloudinary
+
+_**As Cloudinary has released a [new Angular2 SDK](http://cloudinary.com/blog/new_angular_sdk_for_image_management_more_than_meets_the_eye), this cloudinary component is deprecated and support is discontinued.**_
+
 [![Build Status](https://travis-ci.org/Ekito/ng2-cloudinary.svg?branch=master)](https://travis-ci.org/ekito/ng2-cloudinary)
 [![npm version](https://badge.fury.io/js/ng2-cloudinary.svg)](https://badge.fury.io/js/ng2-cloudinary)
 [![devDependency Status](https://david-dm.org/ekito/ng2-cloudinary/dev-status.svg)](https://david-dm.org/ekito/ng2-cloudinary#info=devDependencies)
